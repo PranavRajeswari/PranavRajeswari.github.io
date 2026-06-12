@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranav R — Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(13,17,23,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #21262d;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 52px;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #58a6ff;
+    }
+
+    .nav-logo span { color: #7ee787; }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav ul a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #8b949e;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: #58a6ff; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #3fb950;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-prompt::before {
+      content: '▶';
+      color: #58a6ff;
+      font-size: 10px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 600;
+      color: #e6edf3;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 .accent { color: #58a6ff; }
+
+    .hero-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      color: #7ee787;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: #8b949e;
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: #238636;
+      border-color: #2ea043;
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #2ea043; }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: #30363d;
+      color: #8b949e;
+    }
+
+    .btn-ghost:hover { border-color: #58a6ff; color: #58a6ff; }
+
+    .btn-resume {
+      background: transparent;
+      border-color: #9e6a03;
+      color: #d29922;
+    }
+
+    .btn-resume:hover { border-color: #d29922; color: #f0c644; }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      border-top: 1px solid #21262d;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #58a6ff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #e6edf3;
+      margin-bottom: 2rem;
+    }
+
+    /* ── About ── */
+    .about-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .about-text {
+      color: #8b949e;
+      font-size: 15px;
+      line-height: 1.8;
+      grid-column: 1 / -1;
+    }
+
+    .about-text .hl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #58a6ff;
+    }
+
+    .about-stat {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      color: #7ee787;
+      font-weight: 700;
+    }
+
+    .stat-lbl { font-size: 12px; color: #8b949e; margin-top: 2px; }
+
+    /* ── Skills ── */
+    .skill-group { margin-bottom: 1.5rem; }
+
+    .skill-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #8b949e;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-group-title::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background: #58a6ff;
+      border-radius: 2px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      background: #161b22;
+      white-space: nowrap;
+    }
+
+    .tag.go  { border-color: #1f6feb; color: #58a6ff; }
+    .tag.infra { border-color: #1a7f37; color: #3fb950; }
+    .tag.net { border-color: #9e6a03; color: #d29922; }
+
+    /* ── Experience ── */
+    .exp-item {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .exp-role {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #7ee787;
+      background: #0d1117;
+      padding: 2px 10px;
+      border-radius: 20px;
+      border: 1px solid #1a7f37;
+    }
+
+    .exp-org {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #58a6ff;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-bullets { list-style: none; }
+
+    .exp-bullets li {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .exp-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: #3fb950;
+      font-weight: 700;
+    }
+
+    /* ── Projects ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .proj-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .proj-card:hover { border-color: #30363d; }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #58a6ff;
+    }
+
+    .proj-icon { font-size: 18px; color: #30363d; }
+
+    .proj-desc { font-size: 13px; color: #8b949e; line-height: 1.7; margin-bottom: 0.75rem; }
+
+    .proj-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .stack-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #8b949e;
+    }
+
+    /* ── Education ── */
+    .edu-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .edu-inst {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e6edf3;
+      margin-bottom: 2px;
+    }
+
+    .edu-degree { font-size: 14px; color: #8b949e; }
+
+    .edu-meta { text-align: right; }
+
+    .edu-gpa {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      color: #7ee787;
+      font-weight: 700;
+    }
+
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #8b949e;
+      margin-top: 2px;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-card:hover { border-color: #58a6ff; }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .ci-email { background: #1c2128; color: #58a6ff; border: 1px solid #1f6feb; }
+    .ci-li    { background: #1c2128; color: #2ea043; border: 1px solid #238636; }
+    .ci-gh    { background: #1c2128; color: #8b949e; border: 1px solid #30363d; }
+
+    .contact-lbl { font-size: 11px; color: #8b949e; margin-bottom: 1px; }
+    .contact-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e6edf3; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #21262d;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #484f58;
+    }
+
+    footer span { color: #3fb950; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .proj-grid, .contact-grid, .about-card { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo mono"><span>~/</span>pranav</div>
+    <ul>
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-prompt mono">whoami</div>
+    <h1>Pranav <span class="accent">R.</span></h1>
+    <div class="hero-tagline mono">Systems Engineer · SD-WAN · Go · Linux</div>
+    <p class="hero-desc">
+      I build infrastructure that runs at the edge — real-time telemetry pipelines,
+      SD-WAN observability, and systems that stay up when networks don't.
+      Based in India, currently at Karios.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="mailto:pranav.mukundh@gmail.com">
+        <i class="ti ti-mail" aria-hidden="true"></i> get in touch
+      </a>
+      <a class="btn btn-resume" href="Pranav_Resume.pdf" target="_blank">
+        <i class="ti ti-download" aria-hidden="true"></i> resume
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/PranavRajeswari" target="_blank">
+        <i class="ti ti-brand-github" aria-hidden="true"></i> GitHub
+      </a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/pranav-r-9b694a241/" target="_blank">
+        <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="section-label">// about</div>
+    <div class="section-title">A bit about me</div>
+    <div class="about-card">
+      <p class="about-text">
+        Systems engineer with a background in Electronics &amp; Communication Engineering.
+        At Karios, I get to live inside the <span class="hl">karios-cube</span> SD-WAN platform —
+        chasing packets across WAN links, wiring up observability pipelines that actually tell you
+        what broke and why, and writing routing logic that reacts before anyone has to.
+        I care about systems that are debuggable, recoverable, and honest about their state.
+      </p>
+      <div class="about-stat">
+        <div class="stat-val">Networks</div>
+        <div class="stat-lbl">Systems obsession</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-val">SD-WAN</div>
+        <div class="stat-lbl">Production domain</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-val">Linux</div>
+        <div class="stat-lbl">Home environment</div>
+      </div>
+      <div class="about-stat">
+        <div class="stat-val">Debugging</div>
+        <div class="stat-lbl">Favorite skill</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills">
+    <div class="section-label">// skills</div>
+    <div class="section-title">Technical skills</div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Languages &amp; runtime</div>
+      <div class="tags">
+        <span class="tag go">Go</span>
+        <span class="tag">Python</span>
+        <span class="tag">C</span>
+        <span class="tag">C++</span>
+        <span class="tag">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Observability &amp; monitoring</div>
+      <div class="tags">
+        <span class="tag infra">Prometheus</span>
+        <span class="tag infra">InfluxDB</span>
+        <span class="tag infra">node_exporter</span>
+        <span class="tag">Metrics aggregation</span>
+        <span class="tag">Alerting pipelines</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Networking &amp; routing</div>
+      <div class="tags">
+        <span class="tag net">OSPF / FRRouting</span>
+        <span class="tag net">WireGuard</span>
+        <span class="tag net">iproute2</span>
+        <span class="tag net">SD-WAN</span>
+        <span class="tag net">Layer 2/3</span>
+        <span class="tag">MQTT</span>
+        <span class="tag">WiFi / BLE</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Linux &amp; systems</div>
+      <div class="tags">
+        <span class="tag">Linux administration</span>
+        <span class="tag">Namespace mgmt</span>
+        <span class="tag">sysfs / NIC diagnostics</span>
+        <span class="tag">Systemd</span>
+        <span class="tag">mmcli</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Backend &amp; tooling</div>
+      <div class="tags">
+        <span class="tag">Go REST APIs</span>
+        <span class="tag">RBAC middleware</span>
+        <span class="tag">Structured logging</span>
+        <span class="tag">Git</span>
+        <span class="tag">Agile / Scrum</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="section-label">// experience</div>
+    <div class="section-title">Where I've worked</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">System Engineer</div>
+        <div class="exp-date">May 2025 – Present</div>
+      </div>
+      <div class="exp-org">Karios</div>
+      <ul class="exp-bullets">
+        <li>Built a real-time telemetry ingestion pipeline in Go, parsing live cellular metrics (RSRP, RSRQ, SINR) from Sierra Wireless 4G modems via mmcli, integrated into the karios-edge daemon.</li>
+        <li>Monitored distributed system health across multi-WAN SD-WAN deployments, triaging degradation events through log correlation and metrics analysis.</li>
+        <li>Implemented automated alerting and event-driven routing — OSPF cost injection via FRRouting on threshold breaches — reducing WAN link failure recovery time.</li>
+        <li>Built Go backend API services with RBAC middleware and authentication flow integration.</li>
+        <li>Performed Linux diagnostics across namespace management, sysfs/NIC inspection, iproute2 routing validation, and WireGuard tunnel debugging.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item" style="border-left-color: #3fb950;">
+      <div class="exp-header">
+        <div class="exp-role">Technology Support Intern</div>
+        <div class="exp-date">Mar 2025 – May 2025</div>
+      </div>
+      <div class="exp-org">ICITY Technologies</div>
+      <ul class="exp-bullets">
+        <li>Deployed and extended the MagicMirror open-source platform on Raspberry Pi 4 with modules for weather, calendar, system status, voice commands, and Spotify.</li>
+        <li>Gained hands-on experience with Linux-based single-board computing, Node.js module development, and voice recognition integration.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="section-label">// projects</div>
+    <div class="section-title">Things I've built</div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-name">8-bit Computer</div>
+          <i class="ti ti-cpu proj-icon" aria-hidden="true"></i>
+        </div>
+        <p class="proj-desc">Designed a complete 8-bit processor from discrete components — flip-flops, counters, EEPROM — with ALU, memory interface, and control unit. Programmed via a custom assembly-like instruction set.</p>
+        <div class="proj-stack">
+          <span class="stack-pill">Arduino IDE</span>
+          <span class="stack-pill">C++</span>
+          <span class="stack-pill">Logic ICs</span>
+          <span class="stack-pill">EEPROM</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-name">Voice-auth lock · ESP32</div>
+          <i class="ti ti-lock proj-icon" aria-hidden="true"></i>
+        </div>
+        <p class="proj-desc">Built on-device speaker verification with MFCC feature extraction and PIN-based fallback — demonstrating multi-layer authentication and fail-safe access control.</p>
+        <div class="proj-stack">
+          <span class="stack-pill">ESP32</span>
+          <span class="stack-pill">I2C</span>
+          <span class="stack-pill">MFCC</span>
+          <span class="stack-pill">C++</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-name">IoT sensor network</div>
+          <i class="ti ti-topology-star proj-icon" aria-hidden="true"></i>
+        </div>
+        <p class="proj-desc">Deployed a distributed IoT monitoring system using MQTT pub-sub — collecting sensor data in real time and triggering responses on threshold events, analogous to infrastructure alerting.</p>
+        <div class="proj-stack">
+          <span class="stack-pill">ESP8266</span>
+          <span class="stack-pill">MQTT</span>
+          <span class="stack-pill">Mosquitto</span>
+          <span class="stack-pill">Node.js</span>
+        </div>
+      </div>
+
+      <div class="proj-card" style="border: 1px dashed #21262d; background: transparent; display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center;">
+          <i class="ti ti-plus" style="font-size:24px; color:#21262d;" aria-hidden="true"></i>
+          <p style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#484f58; margin-top:8px;">more coming soon</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="section-label">// education</div>
+    <div class="section-title">Academic background</div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">KGiSL Institute of Technology</div>
+        <div class="edu-degree">B.E. Electronics and Communication Engineering</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-gpa">7.6 / 10</div>
+        <div class="edu-year">Nov 2021 – May 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="section-label">// contact</div>
+    <div class="section-title">Let's connect</div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:pranav.mukundh@gmail.com">
+        <div class="contact-icon ci-email"><i class="ti ti-mail" aria-hidden="true"></i></div>
+        <div>
+          <div class="contact-lbl">Email</div>
+          <div class="contact-val">pranav.mukundh@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/pranav-r-9b694a241/" target="_blank">
+        <div class="contact-icon ci-li"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></div>
+        <div>
+          <div class="contact-lbl">LinkedIn</div>
+          <div class="contact-val">Pranav Rajesh</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://github.com/PranavRajeswari" target="_blank">
+        <div class="contact-icon ci-gh"><i class="ti ti-brand-github" aria-hidden="true"></i></div>
+        <div>
+          <div class="contact-lbl">GitHub</div>
+          <div class="contact-val">PranavRajeswari</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    built by <span>Pranav</span> · Bengaluru, India
+  </footer>
+
+</body>
+</html>
